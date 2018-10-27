@@ -1,0 +1,20 @@
+Package: RankMetric
+Type: Package
+Title: Calculates the Distance between Rankings for different Metrics
+Version: 0.0.0.9000
+Author: person("Lucy", "Small", email = "lucy.small@ucdconnect.ie", role =
+    c("aut", "cre"))
+Maintainer: Lucy Small <lucy.small@ucdconnect.ie>
+Description: This package calculates the distance between any pair of full or
+    partial rankings for the metrics given in Metric Methods for Analyzing
+    Partially Ranked Data by Critchlow. It allows for tied rankings.
+Depends: R (>= 3.3.1)
+License: GPL-3
+LazyData: true
+LinkingTo: Rcpp
+Imports: Rcpp , LIStest, stats
+RoxygenNote: 6.1.0
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+NeedsCompilation: yes
+Packaged: 2018-02-26 23:14:52 UTC; Lucy
