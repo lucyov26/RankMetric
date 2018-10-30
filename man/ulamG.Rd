@@ -10,10 +10,10 @@ ulamG(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Ulam's distance between the two permutations.
+Returns Ulam's distance between the two rankings.
 }
 \description{
-Computes Ulam's distance between two permutations, where any number of items with equal rankings
+Computes Ulam's distance between two rankings, where any number of items with equal rankings
  are now permitted in each ranking.
 }
 \examples{

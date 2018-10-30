@@ -2,7 +2,7 @@
 % Please edit documentation in R/rpack2.R
 \name{hamP}
 \alias{hamP}
-\title{Hamming Distance for Partial permutations}
+\title{Hamming Distance for Partial rankings}
 \usage{
 hamP(a, b, k)
 }
@@ -12,15 +12,15 @@ hamP(a, b, k)
 \item{k}{integer}
 }
 \value{
-Returns the Hamming distance between the two partial permutations,
+Returns the Hamming distance between the two partial rankings,
 where only the first \code{k} items have been ranked. No ties are permitted.
 }
 \description{
-Computes the Hamming distance between two partial permutations.
+Computes the Hamming distance between two partial rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 k=3
 hamP(a,b,k)
 }

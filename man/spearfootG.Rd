@@ -10,10 +10,10 @@ spearfootG(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Spearman's footrule between the two permutations.
+Returns Spearman's footrule between the two rankings.
 }
 \description{
-Computes Spearman's footrule between two permutations, where any number of items with equal permutations
+Computes Spearman's footrule between two rankings, where any number of items with equal rankings
 are now permitted in each ranking.
 }
 \examples{

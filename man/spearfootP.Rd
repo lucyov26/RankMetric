@@ -2,7 +2,7 @@
 % Please edit documentation in R/rpack2.R
 \name{spearfootP}
 \alias{spearfootP}
-\title{Spearman's Footrule for Partial permutations}
+\title{Spearman's Footrule for Partial rankings}
 \usage{
 spearfootP(a, b, k)
 }
@@ -12,15 +12,15 @@ spearfootP(a, b, k)
 \item{k}{integer}
 }
 \value{
-Returns Spearman's footrule between  two partial permutations,
+Returns Spearman's footrule between  two partial rankings,
 where only the first \code{k} items have been ranked. No ties are permitted.
 }
 \description{
-Computes Spearman's footrule between two partial permutations.
+Computes Spearman's footrule between two partial rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 k=3
 spearfootP(a,b,k)
 }

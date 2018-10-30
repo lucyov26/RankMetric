@@ -2,7 +2,7 @@
 % Please edit documentation in R/rpack2.R
 \name{spearE}
 \alias{spearE}
-\title{Spearman's Rho for permutations with Ties}
+\title{Spearman's Rho for rankings with Ties}
 \usage{
 spearE(x, y)
 }
@@ -10,10 +10,10 @@ spearE(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Spearman's rho between the two permutations.
+Returns Spearman's rho between the two rankings.
 }
 \description{
-Computes Spearman's rho between two permutations, where
+Computes Spearman's rho between two rankings, where
  items with equal ranking are now permitted. The number of items placed in the
  ith category must be the same.
 }

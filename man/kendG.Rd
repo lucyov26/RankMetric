@@ -10,10 +10,10 @@ kendG(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Kendall's tau between the two permutations.
+Returns Kendall's tau between the two rankings.
 }
 \description{
-Computes Kendall's tau between two permutations, where any number of items
+Computes Kendall's tau between two rankings, where any number of items
 with equal ranking are now permitted in each ranking.
 }
 \examples{

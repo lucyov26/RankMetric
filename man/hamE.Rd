@@ -10,10 +10,10 @@ hamE(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns the Hamming distance between the two permutations.
+Returns the Hamming distance between the two rankings.
 }
 \description{
-Computes the Hamming distance between two permutations, where
+Computes the Hamming distance between two rankings, where
  items with equal ranking are now permitted. The number of items placed in the
  ith category must be the same.
 }

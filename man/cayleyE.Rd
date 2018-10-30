@@ -10,10 +10,10 @@ cayleyE(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Cayley's distance between the two permutations.
+Returns Cayley's distance between the two rankings.
 }
 \description{
-Computes Cayley's distance between two permutations, where
+Computes Cayley's distance between two rankings, where
  items with equal ranking are now permitted. The number of items placed in the
  ith category must be the same. The number of groups must be 2 or 3, as Cayley's distance is undefined in other cases.
 }

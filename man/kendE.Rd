@@ -10,12 +10,11 @@ kendE(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Kendall's tau between the two permutations.
+Returns Kendall's tau between the two rankings.
 }
 \description{
-Computes Kendall's tau between two permutations, where
- items with equal ranking are now permitted. The number of items placed in the
- ith category must be the same.
+Computes Kendall's tau between two rankings, where
+ items with equal ranking are now permitted. The number of items placed in the ith category must be the same.
 }
 \examples{
 a = c(3,1,2,2,3)

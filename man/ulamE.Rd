@@ -10,10 +10,10 @@ ulamE(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns  Ulam's distance between the two permutations.
+Returns  Ulam's distance between the two rankings.
 }
 \description{
-Computes  Ulam's distance between two permutations, where
+Computes  Ulam's distance between two rankings, where
  items with equal ranking are now permitted. The number of items placed in the
  ith category must be the same.
 }

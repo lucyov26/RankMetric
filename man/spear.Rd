@@ -10,14 +10,14 @@ spear(a, b)
 \item{a, b}{integer vectors}
 }
 \value{
-Returns Spearman's rho between the two permutations.
+Returns Spearman's rho between the two rankings.
 }
 \description{
-Computes Spearman's rho between two full permutations.
+Computes Spearman's rho between two full rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 spear(a,b)
 }
 \author{

@@ -10,14 +10,14 @@ ham(a, b)
 \item{a, b}{integer vectors}
 }
 \value{
-The Hamming distance between the two permutations.
+The Hamming distance between the two rankings.
 }
 \description{
-Returns the Hamming distance between two full permutations.
+Returns the Hamming distance between two full rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 ham(a,b)
 }
 \author{

@@ -33,7 +33,7 @@ distance(x, metric, perm = TRUE, ranktype = "full", k = 2)
 }
 \value{
 Returns a matrix of the distances between all the rankings/ permutations
-in the inputted matrix. If \code{ranktype} is \code{"anyties"} the function will work for any
+in the input matrix. If \code{ranktype} is \code{"anyties"} the function will work for any
 type of partial ranking or ranking with ties. However using \code{"full"} for complete rankings
 or \code{"partial"} for partial ranking with no ties for that kind of data will run faster.
 

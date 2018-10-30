@@ -34,7 +34,7 @@ NULL
 #'}
 #' @param k the number of items ranked in a partial ranking
 #' @return Returns a matrix of the distances between all the rankings/ permutations
-#' in the inputted matrix. If \code{ranktype} is \code{"anyties"} the function will work for any
+#' in the input matrix. If \code{ranktype} is \code{"anyties"} the function will work for any
 #' type of partial ranking or ranking with ties. However using \code{"full"} for complete rankings
 #' or \code{"partial"} for partial ranking with no ties for that kind of data will run faster.
 #'
@@ -107,7 +107,7 @@ distance = function(x, metric, perm = TRUE, ranktype  = "full", k=2){
 
   if(ranktype == "full"){
 
-    if(perm == F){
+    if(perm == TRUE){
       if(metric == "kendall"||metric == "spearfoot"||metric == "spearrho"||metric == "ulam"){
         x = t(apply(x,1,inv))
       }
@@ -123,7 +123,7 @@ distance = function(x, metric, perm = TRUE, ranktype  = "full", k=2){
 
   if(ranktype == "partial"){
 
-    if(perm==F){
+    if(perm==TRUE){
       x = t(apply(x,1,inv))
     }
 
@@ -277,15 +277,15 @@ nig3 = function(a,b){
 
 #' @rdname spear
 #' @title Spearman's Rho
-#' @description Computes Spearman's rho between two full permutations.
+#' @description Computes Spearman's rho between two full rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #'
 #' @param a,b integer vectors
-#' @return Returns Spearman's rho between the two permutations.
+#' @return Returns Spearman's rho between the two rankings.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' spear(a,b)
 #' @export
 spear = function(a,b){
@@ -296,15 +296,15 @@ spear = function(a,b){
 #Spearman's Footrule
 #' @rdname spearfoot
 #' @title Spearman's Footrule
-#' @description Computes Spearman's Footrule between two full permutations.
+#' @description Computes Spearman's Footrule between two full rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #'
 #' @param a,b integer vectors
-#' @return Returns Spearman's footrule between the two permutations.
+#' @return Returns Spearman's footrule between the two rankings.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' spearfoot(a,b)
  #' @export
 spearfoot = function(a,b){
@@ -314,15 +314,15 @@ spearfoot = function(a,b){
 
 #' @rdname kend
 #' @title Kendall's Tau
-#' @description Computes Kendall's tau between two full permutations.
+#' @description Computes Kendall's tau between two full rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #'
 #' @param a,b integer vectors
-#' @return Returns Kendall's tau between two full permutations.
+#' @return Returns Kendall's tau between two full rankings.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' kend(a,b)
 #' @export
 
@@ -337,15 +337,15 @@ kend = function(a,b){
 #Computes Hamming distance of perms a,b
 #' @rdname ham
 #' @title Hamming Distance
-#' @description Returns the Hamming distance between two full permutations.
+#' @description Returns the Hamming distance between two full rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #'
 #' @param a,b integer vectors
-#' @return The Hamming distance between the two permutations.
+#' @return The Hamming distance between the two rankings.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' ham(a,b)
 #' @export
 
@@ -358,15 +358,15 @@ ham = function(a,b){
 # computes Ulam's Distance for perms a,b
 #' @rdname ulam
 #' @title Ulam's Distance
-#' @description Computes Ulam's distance between two full permutations.
+#' @description Computes Ulam's distance between two full rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #'
 #' @param a,b integer vectors
-#' @return Returns Ulam's distance between the two permutations.
+#' @return Returns Ulam's distance between the two rankings.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' ulam(a,b)
 #' @export
 ulam = function(a,b){
@@ -381,17 +381,17 @@ ulam = function(a,b){
 #=====================================================================
 #Computes Hamming distance of perms a,b for partial ranking
 #' @rdname hamP
-#' @title Hamming Distance for Partial permutations
-#' @description Computes the Hamming distance between two partial permutations.
+#' @title Hamming Distance for Partial rankings
+#' @description Computes the Hamming distance between two partial rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param a,b integer vectors
 #' @param k integer
-#' @return Returns the Hamming distance between the two partial permutations,
+#' @return Returns the Hamming distance between the two partial rankings,
 #' where only the first \code{k} items have been ranked. No ties are permitted.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' k=3
 #' hamP(a,b,k)
 #' @export
@@ -405,67 +405,72 @@ hamP = function(a,b,k){
 }
 
 #=====================================================================
-#Computes Kendall's distance of perms a,b for partial permutations
+#Computes Kendall's distance of perms a,b for partial rankings
 #' @rdname kendP
-#' @title Kendall's Distance for Partial permutations
-#' @description Computes Kendall's distance between two partial permutations.
+#' @title Kendall's Distance for Partial rankings
+#' @description Computes Kendall's distance between two partial rankings.
 
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param a,b integer vectors
 #' @param k integer
-#' @return Returns Kendall's distance between two permutations x and y, where we care about the first k ranked items only
+#' @return Returns Kendall's distance between two rankings x and y, where we care about the first k ranked items only
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' k=3
 #' kendP(a,b,k)
 #' @export
 kendP = function(a,b,k){
+  
   n = length(a)
   v = 1:n
-
-  A = v[a<=k &b<=k]
-  B = v[a<=k &b>k]
-  D = v[a>k &b<=k]
-
-  if(k == 1){p1=0}else{p1 = kend(a[A],b[A])}
-
+  A = v[a <= k & b <= k]
+  B = v[a <= k & b > k]
+  D = v[a > k & b <= k]
   h = length(B)
-  p4 = h*(n+k-(h-1)/2)
-
-  return(p1 +p4 - sum(a[B]) - sum(b[D]))
+  
+  if (length(A)<2 ){p1 = 0}else{p1 = kend(a[A], b[A])}
+  
+  
+  if(length(B)==0){p2=0}else{p2 = sum(a[B])}
+  if(length(D)==0){p3=0}else{p3 = sum(b[D])}
+  
+  return(p1 + h*(n + k - (h - 1)/2) - p2 - p3)
 }
 
 #=====================================================================
 # Spearman's footrule
 #' @rdname spearfootP
-#' @title Spearman's Footrule for Partial permutations
-#' @description Computes Spearman's footrule between two partial permutations.
+#' @title Spearman's Footrule for Partial rankings
+#' @description Computes Spearman's footrule between two partial rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param a,b integer vectors
 #' @param k integer
-#' @return Returns Spearman's footrule between  two partial permutations,
+#' @return Returns Spearman's footrule between  two partial rankings,
 #' where only the first \code{k} items have been ranked. No ties are permitted.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' k=3
 #' spearfootP(a,b,k)
 #' @export
 
 spearfootP = function(a,b,k){
-
   n = length(a)
   v = 1:n
-
-  A = v[a<=k &b<=k]
-  B = v[a<=k &b>k]
-  D = v[a>k &b<=k]
-  h=length(B)
-
-  return(h*(2*n+1-h)+sum(abs(a[A]-b[A]))-sum(a[B])-sum(b[D]))
+  A = v[a <= k & b <= k]
+  B = v[a <= k & b > k]
+  D = v[a > k & b <= k]
+  h = length(B)
+  
+  if(length(A)==0){p1= 0 }else(p1= sum(abs(a[A] - b[A])))
+  if(length(B)==0){
+    p2=0
+  }else(p2 =  sum(a[B])+sum(b[D]))
+  
+  return(h*(2*n + 1 - h) + p1 -p2)
 
 }
 
@@ -518,7 +523,7 @@ ncy3 = function(x,k){
 # it's quicker than the code I've written above
 #' @rdname cayley
 #' @title Cayley's Distance
-#' @description \code{cayley} returns Cayley's distance between two full permutations.
+#' @description \code{cayley} returns Cayley's distance between two full rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #'
 #' @param x,y integer vectors
@@ -526,7 +531,7 @@ ncy3 = function(x,k){
 
 #' @examples
 #' x = c(3,1,2,5,4)
-#' y = 1:5
+#' y = c(1,2,3,4,5)
 #' cayley(x,y)
 
 
@@ -547,18 +552,18 @@ cayley = function(x,y)
 
 
 #' @rdname cayleyP
-#' @title Cayley's Distance for Partial permutations
-#' @description Computes Cayley's distance between two partial permutations.
+#' @title Cayley's Distance for Partial rankings
+#' @description Computes Cayley's distance between two partial rankings.
 
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param a,b integer vectors
 #' @param k integer
-#' @return Returns Cayley's distance between  two partial permutations,
+#' @return Returns Cayley's distance between  two partial rankings,
 #' where only the first \code{k} items have been ranked. No ties are permitted.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' k=3
 #' cayleyP(a,b,k)
 #' @export
@@ -575,16 +580,16 @@ cayleyP = function(a,b,k){
 #===============================================
 # Spearman's rho
 #' @rdname spearP
-#' @title Spearman's Rho  for Partial permutations
-#' @description Computes Spearman's rho  between two partial permutations.
+#' @title Spearman's Rho  for Partial rankings
+#' @description Computes Spearman's rho  between two partial rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param a,b integer vectors
 #' @param k integer
-#' @return Returns Spearman's rho  between two permutations x and y, where we care about the first k ranked items only
+#' @return Returns Spearman's rho  between two rankings x and y, where we care about the first k ranked items only
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' k=3
 #' spearP(a,b,k)
 #' @export
@@ -593,37 +598,44 @@ cayleyP = function(a,b,k){
 spearP = function(a,b,k){
   n = length(a)
   v = 1:n
-
-  A = v[a<=k &b<=k]
-  B = v[a<=k &b>k]
-  D = v[a>k &b<=k]
-
+  A = v[a <= k & b <= k]
+  B = v[a <= k & b > k]
+  D = v[a > k & b <= k]
   h = length(B)
-
-  p = sort(a[B])
-  s = sort(b[D])
-  l = length(p)
-
-  return((sum((a[A]-b[A])^2)+h*h*(n-k-h)+
-            max(sum((n+1-1:l-p)^2)+sum((k+1:l-s)^2),sum((k-1:l-p)^2)+
-               sum((n+1-1:l-s)^2)))^0.5)
+  if (h > 0) {
+    p = sort(a[B])
+    s = sort(b[D])
+    l = 1:length(p)
+  }else {
+    l = 0
+    p = 0
+    s = 0
+  }
+  if(h>0){
+    p3 = 
+      max(sum((n +  1 - l - p)^2) + sum((k + l - s)^2), 
+          sum((k - l - p)^2) +  sum((n + 1 - l - s)^2))
+  }else{p3=0}
+  
+  return((   sum((a[A] - b[A])^2) + 
+               h * h * (n - k - h) + 
+               p3)^0.5)
 }
-
 
 #==============================================
 # Ulam's distance
 #' @rdname ulamP
-#' @title Ulam's Distance for Partial permutations
-#' @description Computes Ulam's distance  between two partial permutations.
+#' @title Ulam's Distance for Partial rankings
+#' @description Computes Ulam's distance  between two partial rankings.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param a,b integer vectors
 #' @param k integer
-#' @return Returns Ulam's distance between  two partial permutations,
+#' @return Returns Ulam's distance between  two partial rankings,
 #' where only the first \code{k} items have been ranked. No ties are permitted.
 
 #' @examples
 #' a = c(3,1,2,5,4)
-#' b = 1:5
+#' b = c(1,2,3,4,5)
 #' k=3
 #' ulamP(a,b,k)
 #' @export
@@ -690,14 +702,14 @@ ulamP=function(a,b,k){
 # Hamming distance
 #' @rdname hamE
 #' @title Hamming Distance with Ties
-#' @description Computes the Hamming distance between two permutations, where
+#' @description Computes the Hamming distance between two rankings, where
 #'  items with equal ranking are now permitted. The number of items placed in the
 #'  ith category must be the same.
 
 
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns the Hamming distance between the two permutations.
+#' @return Returns the Hamming distance between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,2,3,3)
@@ -708,19 +720,17 @@ hamE = function(x,y){
   length(x)-length(which((x-y)==0))
 }
 
-
 #======================================================
 # Kendall's tau
 #' @rdname kendE
 #' @title Kendall's Tau for Tankings with Ties
-#' @description Computes Kendall's tau between two permutations, where
-#'  items with equal ranking are now permitted. The number of items placed in the
-#'  ith category must be the same.
+#' @description Computes Kendall's tau between two rankings, where
+#'  items with equal ranking are now permitted. The number of items placed in the ith category must be the same.
 
 
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Kendall's tau between the two permutations.
+#' @return Returns Kendall's tau between the two rankings.
 
 #' @examples
 #' a = c(3,1,2,2,3)
@@ -751,14 +761,14 @@ kendE = function(x,y){
 # Spearman's footrule
 #' @rdname spearfootE
 #' @title Spearman's Footrule with Ties
-#' @description Computes Spearman's footrule between two permutations, where
+#' @description Computes Spearman's footrule between two rankings, where
 #'  items with equal ranking are now permitted. The number of items placed in the
 #'  ith category must be the same.
 
 
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Spearman's footrule between the two permutations.
+#' @return Returns Spearman's footrule between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,2,3,3)
@@ -813,15 +823,15 @@ spearfootE = function(x,y){
 # Spearman's rho
 
 #' @rdname spearE
-#' @title Spearman's Rho for permutations with Ties
-#' @description Computes Spearman's rho between two permutations, where
+#' @title Spearman's Rho for rankings with Ties
+#' @description Computes Spearman's rho between two rankings, where
 #'  items with equal ranking are now permitted. The number of items placed in the
 #'  ith category must be the same.
 
 
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Spearman's rho between the two permutations.
+#' @return Returns Spearman's rho between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,2,3,3)
@@ -873,12 +883,12 @@ spearE = function(x,y){
 # Cayley's distance, only works for size of groups = 2 or 3
 #' @rdname cayleyE
 #' @title Cayley's Distance with Ties
-#' @description Computes Cayley's distance between two permutations, where
+#' @description Computes Cayley's distance between two rankings, where
 #'  items with equal ranking are now permitted. The number of items placed in the
 #'  ith category must be the same. The number of groups must be 2 or 3, as Cayley's distance is undefined in other cases.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Cayley's distance between the two permutations.
+#' @return Returns Cayley's distance between the two rankings.
 #' @export
 #' @examples
 #' a = c(3,1,2,2,3)
@@ -926,11 +936,11 @@ cayleyE = function(x,y){
 # Kendall's tau
 #' @rdname kendG
 #' @title Kendall's Tau for any Number of Ties
-#' @description Computes Kendall's tau between two permutations, where any number of items
+#' @description Computes Kendall's tau between two rankings, where any number of items
 #' with equal ranking are now permitted in each ranking.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Kendall's tau between the two permutations.
+#' @return Returns Kendall's tau between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,3,4,4)
@@ -970,11 +980,11 @@ kendG = function(x,y){
 # Spearman's footrule
 #' @rdname spearfootG
 #' @title Spearman's Footrule for any Number of Ties
-#' @description Computes Spearman's footrule between two permutations, where any number of items with equal permutations
+#' @description Computes Spearman's footrule between two rankings, where any number of items with equal rankings
 #' are now permitted in each ranking.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Spearman's footrule between the two permutations.
+#' @return Returns Spearman's footrule between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,3,4,4)
@@ -1029,12 +1039,12 @@ spearfootG = function(x,y){
 # Spearman's rho
 #' @rdname spearG
 #' @title Spearman's Rho for any Number of Ties
-#' @description Computes Spearman's rho between two permutations x and y, where any number of items with equal rankings
+#' @description Computes Spearman's rho between two rankings x and y, where any number of items with equal rankings
 #' are now permitted in each ranking. The number of items
-#'  ranked r for the two permutations can vary.
+#'  ranked r for the two rankings can vary.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Spearman's rho between two permutations x and y
+#' @return Returns Spearman's rho between two rankings x and y
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,3,4,4)
@@ -1088,11 +1098,11 @@ spearG = function(x,y){
 # Hamming distance
 #' @rdname hamG
 #' @title Hamming Distance for any Number of Ties
-#' @description Computes Hamming distance between two permutations, where any number of items with equal rankings
+#' @description Computes Hamming distance between two rankings, where any number of items with equal rankings
 #'  are now permitted in each ranking.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Hamming distance between the two permutations.
+#' @return Returns Hamming distance between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,3,4,4)
@@ -1162,11 +1172,11 @@ hamG = function(x,y){
 # Ulam's distance
 #' @rdname ulamG
 #' @title Ulam's distance for any Number of Ties
-#' @description Computes Ulam's distance between two permutations, where any number of items with equal rankings
+#' @description Computes Ulam's distance between two rankings, where any number of items with equal rankings
 #'  are now permitted in each ranking.
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns Ulam's distance between the two permutations.
+#' @return Returns Ulam's distance between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,3,4,4)
@@ -1211,14 +1221,14 @@ ulamG = function(x,y){
 
 #' @rdname ulamE
 #' @title  Ulam's distance with Ties
-#' @description Computes  Ulam's distance between two permutations, where
+#' @description Computes  Ulam's distance between two rankings, where
 #'  items with equal ranking are now permitted. The number of items placed in the
 #'  ith category must be the same.
 
 
 #' @author Lucy Small, \email{lucy.small@@ucdconnect.ie}
 #' @param x,y integer vectors
-#' @return Returns  Ulam's distance between the two permutations.
+#' @return Returns  Ulam's distance between the two rankings.
 #' @examples
 #' a = c(3,1,2,2,3)
 #' b = c(1,2,2,3,3)

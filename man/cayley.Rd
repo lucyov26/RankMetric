@@ -13,11 +13,11 @@ cayley(x, y)
 Returns Cayley's distance between \code{x} and \code{y}
 }
 \description{
-\code{cayley} returns Cayley's distance between two full permutations.
+\code{cayley} returns Cayley's distance between two full rankings.
 }
 \examples{
 x = c(3,1,2,5,4)
-y = 1:5
+y = c(1,2,3,4,5)
 cayley(x,y)
 }
 \author{

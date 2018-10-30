@@ -10,14 +10,14 @@ kend(a, b)
 \item{a, b}{integer vectors}
 }
 \value{
-Returns Kendall's tau between two full permutations.
+Returns Kendall's tau between two full rankings.
 }
 \description{
-Computes Kendall's tau between two full permutations.
+Computes Kendall's tau between two full rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 kend(a,b)
 }
 \author{

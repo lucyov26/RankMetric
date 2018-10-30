@@ -10,12 +10,12 @@ spearG(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Spearman's rho between two permutations x and y
+Returns Spearman's rho between two rankings x and y
 }
 \description{
-Computes Spearman's rho between two permutations x and y, where any number of items with equal rankings
+Computes Spearman's rho between two rankings x and y, where any number of items with equal rankings
 are now permitted in each ranking. The number of items
- ranked r for the two permutations can vary.
+ ranked r for the two rankings can vary.
 }
 \examples{
 a = c(3,1,2,2,3)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rpack2.R
 \name{kendP}
 \alias{kendP}
-\title{Kendall's Distance for Partial permutations}
+\title{Kendall's Distance for Partial rankings}
 \usage{
 kendP(a, b, k)
 }
@@ -12,14 +12,14 @@ kendP(a, b, k)
 \item{k}{integer}
 }
 \value{
-Returns Kendall's distance between two permutations x and y, where we care about the first k ranked items only
+Returns Kendall's distance between two rankings x and y, where we care about the first k ranked items only
 }
 \description{
-Computes Kendall's distance between two partial permutations.
+Computes Kendall's distance between two partial rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 k=3
 kendP(a,b,k)
 }

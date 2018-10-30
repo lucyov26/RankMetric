@@ -2,7 +2,7 @@
 % Please edit documentation in R/rpack2.R
 \name{ulamP}
 \alias{ulamP}
-\title{Ulam's Distance for Partial permutations}
+\title{Ulam's Distance for Partial rankings}
 \usage{
 ulamP(a, b, k)
 }
@@ -12,15 +12,15 @@ ulamP(a, b, k)
 \item{k}{integer}
 }
 \value{
-Returns Ulam's distance between  two partial permutations,
+Returns Ulam's distance between  two partial rankings,
 where only the first \code{k} items have been ranked. No ties are permitted.
 }
 \description{
-Computes Ulam's distance  between two partial permutations.
+Computes Ulam's distance  between two partial rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 k=3
 ulamP(a,b,k)
 }

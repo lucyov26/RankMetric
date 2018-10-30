@@ -10,10 +10,10 @@ spearfootE(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Spearman's footrule between the two permutations.
+Returns Spearman's footrule between the two rankings.
 }
 \description{
-Computes Spearman's footrule between two permutations, where
+Computes Spearman's footrule between two rankings, where
  items with equal ranking are now permitted. The number of items placed in the
  ith category must be the same.
 }

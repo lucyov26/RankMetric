@@ -10,10 +10,10 @@ hamG(x, y)
 \item{x, y}{integer vectors}
 }
 \value{
-Returns Hamming distance between the two permutations.
+Returns Hamming distance between the two rankings.
 }
 \description{
-Computes Hamming distance between two permutations, where any number of items with equal rankings
+Computes Hamming distance between two rankings, where any number of items with equal rankings
  are now permitted in each ranking.
 }
 \examples{

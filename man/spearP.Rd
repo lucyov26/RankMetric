@@ -2,7 +2,7 @@
 % Please edit documentation in R/rpack2.R
 \name{spearP}
 \alias{spearP}
-\title{Spearman's Rho  for Partial permutations}
+\title{Spearman's Rho  for Partial rankings}
 \usage{
 spearP(a, b, k)
 }
@@ -12,14 +12,14 @@ spearP(a, b, k)
 \item{k}{integer}
 }
 \value{
-Returns Spearman's rho  between two permutations x and y, where we care about the first k ranked items only
+Returns Spearman's rho  between two rankings x and y, where we care about the first k ranked items only
 }
 \description{
-Computes Spearman's rho  between two partial permutations.
+Computes Spearman's rho  between two partial rankings.
 }
 \examples{
 a = c(3,1,2,5,4)
-b = 1:5
+b = c(1,2,3,4,5)
 k=3
 spearP(a,b,k)
 }
