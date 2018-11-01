@@ -422,20 +422,20 @@ hamP = function(a,b,k){
 #' kendP(a,b,k)
 #' @export
 kendP = function(a,b,k){
-  
+
   n = length(a)
   v = 1:n
   A = v[a <= k & b <= k]
   B = v[a <= k & b > k]
   D = v[a > k & b <= k]
   h = length(B)
-  
+
   if (length(A)<2 ){p1 = 0}else{p1 = kend(a[A], b[A])}
-  
-  
+
+
   if(length(B)==0){p2=0}else{p2 = sum(a[B])}
   if(length(D)==0){p3=0}else{p3 = sum(b[D])}
-  
+
   return(p1 + h*(n + k - (h - 1)/2) - p2 - p3)
 }
 
@@ -464,12 +464,12 @@ spearfootP = function(a,b,k){
   B = v[a <= k & b > k]
   D = v[a > k & b <= k]
   h = length(B)
-  
+
   if(length(A)==0){p1= 0 }else(p1= sum(abs(a[A] - b[A])))
   if(length(B)==0){
     p2=0
   }else(p2 =  sum(a[B])+sum(b[D]))
-  
+
   return(h*(2*n + 1 - h) + p1 -p2)
 
 }
@@ -612,13 +612,13 @@ spearP = function(a,b,k){
     s = 0
   }
   if(h>0){
-    p3 = 
-      max(sum((n +  1 - l - p)^2) + sum((k + l - s)^2), 
+    p3 =
+      max(sum((n +  1 - l - p)^2) + sum((k + l - s)^2),
           sum((k - l - p)^2) +  sum((n + 1 - l - s)^2))
   }else{p3=0}
-  
-  return((   sum((a[A] - b[A])^2) + 
-               h * h * (n - k - h) + 
+
+  return((   sum((a[A] - b[A])^2) +
+               h * h * (n - k - h) +
                p3)^0.5)
 }
 
@@ -1278,30 +1278,30 @@ ulamE= function(x,y){
 #' @keywords datasets
 #' @name fifa16
 #' @usage data(fifa16)
-#' @description This is the voting data with voter covariates from the  FIFA Best Player of the Year 2016 award. There were 
-#' 23 candidates on the shortlist and 450 
+#' @description This is the voting data with voter covariates from the  FIFA Best Player of the Year 2016 award. There were
+#' 23 candidates on the shortlist and 450
 #' voters. Each voter provides their top-3 choices. The voters were the national captains,
-#' manager, and one media representative from each country. 
-#' 
+#' manager, and one media representative from each country.
+#'
 #' FIFA, the world football governing body,
 #' divides member countries into six continental confederations, which each organise
 #' continental national and club competitions. The confederation of each voter is
 #' given.
 #' @format A data frame with 450 voters (rows) and 30 variables (columns). The first four columns give the voter \code{name}, \code{role} (captain, manager or media), \code{country} of origin and \code{confederation}(AFC, CAF, CONCAF,CONMEBOL or UEFA).
-#' Columns \code{vote1}, \code{vote2}, \code{vote3} give the names of the candidates chosen by each voter as their top-3 ranking. 
+#' Columns \code{vote1}, \code{vote2}, \code{vote3} give the names of the candidates chosen by each voter as their top-3 ranking.
 #' The remaining columns (8:30) give the full partial rankings in permutation form. The votes are arbitrarily filled in after the top-3.
 #'
 #' @source \url{http://resources.fifa.com/mm/Document/the-best/PlayeroftheYear-Men/02/86/27/05/faward_MenPlayer2016_Neutral.pdf}
 NULL
 
 #' @title Voting data from the 2010 UK Labour leadership election.
-#' @description There are five candidates 266 rankings, some of which are partial rankings
+#' @description There are 5 candidates and 266 rankings, some of which are partial rankings. The candidates are Diane Abbott, Ed Balls, Andy Burnham, David Miliband and Ed Miliband. Each voter ranks at least one candidate.
 #' @docType data
 #' @keywords datasets
 #' @name labour
 #' @usage data(labour)
 #' @format A data frame with 234 rows and 11 variables
-#' 
+#'
 #' @references \url{https://web.archive.org/web/20110101171158/http://www2.labour.org.uk/leadership-mps-and-meps}
 #'
 #' @source \url{https://docs.google.com/spreadsheets/d/1e-gx4Km2ywG85kJCf_byJdMZvdP4QkPHGjPKy_meO30/edit?hl=en&hl=en#gid=0}

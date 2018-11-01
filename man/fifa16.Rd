@@ -5,7 +5,7 @@
 \alias{fifa16}
 \title{Voting data from 2016 FIFA Best Player of the Year}
 \format{A data frame with 450 voters (rows) and 30 variables (columns). The first four columns give the voter \code{name}, \code{role} (captain, manager or media), \code{country} of origin and \code{confederation}(AFC, CAF, CONCAF,CONMEBOL or UEFA).
-Columns \code{vote1}, \code{vote2}, \code{vote3} give the names of the candidates chosen by each voter as their top-3 ranking. 
+Columns \code{vote1}, \code{vote2}, \code{vote3} give the names of the candidates chosen by each voter as their top-3 ranking.
 The remaining columns (8:30) give the full partial rankings in permutation form. The votes are arbitrarily filled in after the top-3.}
 \source{
 \url{http://resources.fifa.com/mm/Document/the-best/PlayeroftheYear-Men/02/86/27/05/faward_MenPlayer2016_Neutral.pdf}
@@ -14,10 +14,10 @@ The remaining columns (8:30) give the full partial rankings in permutation form.
 data(fifa16)
 }
 \description{
-This is the voting data with voter covariates from the  FIFA Best Player of the Year 2016 award. There were 
-23 candidates on the shortlist and 450 
+This is the voting data with voter covariates from the  FIFA Best Player of the Year 2016 award. There were
+23 candidates on the shortlist and 450
 voters. Each voter provides their top-3 choices. The voters were the national captains,
-manager, and one media representative from each country. 
+manager, and one media representative from each country.
 
 FIFA, the world football governing body,
 divides member countries into six continental confederations, which each organise

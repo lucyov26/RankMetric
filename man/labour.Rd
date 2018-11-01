@@ -12,7 +12,7 @@
 data(labour)
 }
 \description{
-There are five candidates 266 rankings, some of which are partial rankings
+There are 5 candidates and 266 rankings, some of which are partial rankings. The candidates are Diane Abbott, Ed Balls, Andy Burnham, David Miliband and Ed Miliband. Each voter ranks at least one candidate.
 }
 \references{
 \url{https://web.archive.org/web/20110101171158/http://www2.labour.org.uk/leadership-mps-and-meps}
